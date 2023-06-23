@@ -1,0 +1,7 @@
+<%= @users.each do |user| %>
+<div>
+  <%= image_tag user.get_image %>
+  <p>image <%= image_tag 'sample-author1.jpg' %></p>
+  <p>name <%= user.name %></p>
+</div>
+<% end %>
