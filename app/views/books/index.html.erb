@@ -1,5 +1,7 @@
 <p>投稿フォームは複数ページにおいてサイドバーに設置されている<br>
    後々部分テンプレートにまとめるが、ここに仮置き中</p>
+
+
 <h1>New book</h1>
   <%= form_with model: @book do |f| %>
     <h4>Title</h4>
@@ -10,3 +12,11 @@
   <% end %>
 
 <p>def create における book_paramsのストロングパラメータがうまく機能していないので暫定措置中 後で直す</p>
+
+<h1>Books</h1>
+<p>Title</p>
+<p>Opinion</p>
+<%= @books.each do |book| %>
+  <p><%= book.title %></p>
+  <p><%= book.body %></p>
+<% end %>
