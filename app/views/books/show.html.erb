@@ -1,9 +1,14 @@
 <div>
-  <p><%= image_tag @book.get_image(100,100) %></p>
+  <p><%= image_tag @book.user.get_image(100,100) %></p>
+  <%= @book.user.name %>
+  <%= @book.title %>
+  <%= @book.body %>
   <% if @book.user == current_user %>
+    <%= link_to "Edit", @book_id_edit_path %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end%>
+  <% end %>
 </div>
 
 <p>Userモデルからimageを引用したいが、現在はBookのカラムにimageを追加している状態<br>
 後で修正する</p>
+<p>editリンクがうまくいかない @book_id_edit_pathにしてるのに/books/:idに飛ぶ</p>
