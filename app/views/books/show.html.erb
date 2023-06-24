@@ -1,9 +1,8 @@
 <div>
-  <%= image_tag @book.get_image %>
-  <p><%= image_tag 'sample-author1.jpg' %></p>
+  <p><%= image_tag @book.get_image(100,100) %></p>
   <% if @book.user == current_user %>
     <%= link_to "Destroy", book_path(@book), method: :delete %>
-  <% end %>
+  <% end%>
 </div>
 
 <p>Userモデルからimageを引用したいが、現在はBookのカラムにimageを追加している状態<br>
