@@ -1,6 +1,9 @@
 <p>投稿フォームは複数ページにおいてサイドバーに設置されている<br>
    後々部分テンプレートにまとめるが、ここに仮置き中</p>
-
+<h1>User info</h1>
+  <%= current_user.name %>
+  <%= current_user.introduction %>
+  <%= link_to "icon設置する", edit_user_path(:id) %>
 
 <h1>New book</h1>
   <%= form_with model: @book do |f| %>
@@ -18,6 +21,6 @@
 <p>Opinion</p>
 <%= @books.each do |book| %>
   <%= image_tag book.user.get_image(100,100) %>
-  <p><%= book.title %></p>
+  <p><%= link_to book.title, book_path(book.id) %></p>
   <p><%= book.body %></p>
 <% end %>

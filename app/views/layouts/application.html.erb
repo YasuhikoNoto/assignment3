@@ -31,6 +31,15 @@
         </li>
       <% else %>
         <li>
+          <%= link_to "Bookers", root_path %>
+        </li>
+        <li>
+          <%= link_to "Home", root_path %>
+        </li>
+        <li>
+          <%= link_to "About", about_path %>
+        </li>
+        <li>
           <%= link_to "Sign up", new_user_registration_path %>
         </li>
         <li>
@@ -39,5 +48,8 @@
       <% end %>
     </header>
     <%= yield %>
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
   </body>
 </html>

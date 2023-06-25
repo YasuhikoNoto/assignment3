@@ -1,3 +1,10 @@
+<h1>Books</h1>
+<p>Title</p>
+<p>Opinion</p>
 <div>
-  <%= image_tag @user.get_image(100,100) %>
+  <%= @user.each do |user| %>
+    <%= image_tag user.get_image(100,100) %>
+    <%= user.book.title %>
+    <%= user.book.body %>
+  <% end %>
 </div>
