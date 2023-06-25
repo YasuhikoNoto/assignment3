@@ -5,6 +5,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @books = @user.books
+    #1行目:@userに、find params:idでUserのパラメータを送る
+    #2行目:@booksに、booksのテーブル情報を@userに関連付けて代入する
   end
 
   def edit
