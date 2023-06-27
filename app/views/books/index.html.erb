@@ -1,12 +1,31 @@
-<%= render 'users/current_side', book: @book %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/current_side', book: @book %>
+    </div>
 
-<p>def create における book_paramsのストロングパラメータがうまく機能していないので暫定措置中 後で直す</p>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= image_tag book.user.get_image(100,100) %></td>
+              <td><%= link_to book.title, book_path(book) %></td>
+              <td><%= book.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<h1>Books</h1>
-<p>Title</p>
-<p>Opinion</p>
-<%= @books.each do |book| %>
-  <%= image_tag book.user.get_image(100,100) %>
-  <p><%= link_to book.title, book_path(book.id) %></p>
-  <p><%= book.body %></p>
-<% end %>
+<!--def create における book_paramsのストロングパラメータがうまく機能していないので暫定措置中 後で直す-->

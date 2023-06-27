@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @book = Book.new
     #1行目:@userに、find params:idでUserのパラメータを送る
     #2行目:@booksに、booksのテーブル情報を@userに関連付けて代入する
   end
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :image)
+    params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
 

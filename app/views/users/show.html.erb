@@ -1,15 +1,34 @@
-<%= render 'side', book: @book, user: @user %>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'side', book: @book, user: @user %>
+    </div>
 
-<h1>Books</h1>
-<p>Title</p>
-<p>Opinion</p>
-<div>
-  <%= @books.each do |book| %>
-    <%= image_tag book.user.get_image(100,100) %>
-    <%= book.title %>
-    <%= book.body %>
-  <% end %>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= image_tag book.user.get_image(100,100) %></td>
+              <td><%= book.title %></td>
+              <td><%= book.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
   <!--eachメソッドはレシーバーが単数だと繰り返し処理ができずエラーとなる
   (今回の場合@userをレシーバーにすると、@userは一人だけなのでエラーとなる）
   そのためレシーバーには繰り返し処理が可能な@booksを置き、コントローラでuserと関連付ける-->
-</div>
