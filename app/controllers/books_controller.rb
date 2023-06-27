@@ -7,6 +7,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
       if @book.save
+        flash[:book_save] ="You have created book successfully."
         redirect_to books_path
       else
         @books = Book.all
@@ -16,11 +17,15 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
+    #@book = Book.find(params[:id])
+    #@user = @book.user
   end
 
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    @book_new = Book.new
   end
 
   def destroy
@@ -31,21 +36,28 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    @user = User.find(params[:id])
+    
   end
 
   def update
     @book = Book.find(params[:id])
-    @book.update
-    redirect_to book_path
+    if @book.update
+      flash[:book_update] = "You have updated book successfully."
+      redirect_to book_path
+    else
+      redirect_to :index
+    end
   end
 
   private
 
   def book_params
-    params.permit(:title, :body)
+    params.require(:book).permit(:title, :body)
     #params.require(:book).permit(:title, :body)
     #.require(:book)をつけるとparams missingエラーが出るので、推奨される方法ではないらしいがいったん削除
     #formがBook.newを受けとれていないっぽい？ いろいろ試したがダメなので
+    #Book.new がちゃんとあるか確認  対応アクション全てに　すでに@bookを定義済みの場合はなんでもよいのでBook.new追加
 
   end
 

@@ -1,7 +1,9 @@
+<%= flash[:book_update] %>
+
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'users/side', book: @book, user: @user %>
+      <%= render 'users/side', book: @book_new, user: @user %>
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -14,7 +16,7 @@
             <td><%= link_to @book.title, book_path %></td>
             <td><%= @book.body %></td>
             <% if @book.user == current_user %>
-              <td><%= link_to "Edit", edit_book_path(:id), class:'btn btn-sm btn-success' %></td>
+              <td><%= link_to "Edit", edit_book_path(current_user), class:'btn btn-sm btn-success' %></td>
               <td><%= link_to "Destroy", book_path(@book), method: :delete, class:'btn btn-sm btn-danger' %></td>
             <% end %>
           </tr>
