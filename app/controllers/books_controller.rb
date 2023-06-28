@@ -18,13 +18,6 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     @book = Book.new
-    if @book.save
-      flash[:book_save] ="You have created book successfully."
-      redirect_to book_path
-    else
-      flash[:create_alert] ="Title can't be blank"
-      render :index
-    end
   end
 
   def show

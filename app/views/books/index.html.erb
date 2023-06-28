@@ -1,5 +1,19 @@
 <%= flash[:book_create] %>
 <%= flash[:create_alert] %>
+<% if @book !=nil %>
+  <p id="notice">
+    <div class="error_explanation" >
+      <% if @book.errors.any? %>
+      <%= @book.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+  </p>
+<% end %>
 
 <div class="container px-5 px-sm-0">
   <div class="row">
