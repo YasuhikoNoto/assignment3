@@ -20,9 +20,9 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <span class="nav-item">
+            <a class="nav-item">
               <%= link_to "Bookers", root_path, class: 'navbar-brand' %>
-            </span>
+            </a>
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
                 <% if user_signed_in? %>
